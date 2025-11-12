@@ -639,6 +639,25 @@ export default function ProspectResults() {
       open: true,
       prospectId,
       prospectName,
+      prospectIds: [],
+    });
+  };
+
+  const handleAddMultipleToList = () => {
+    if (selectedItems.length === 0) {
+      toast({
+        title: "Error",
+        description: "Please select at least one prospect",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setAddToListDialog({
+      open: true,
+      prospectId: "",
+      prospectName: "",
+      prospectIds: selectedItems,
     });
   };
 
