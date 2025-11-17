@@ -12,7 +12,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Document, Page, pdfjs } from "react-pdf";
 import { ChevronLeft, ChevronRight, AlertCircle } from "lucide-react";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
 
 interface AgreementModalProps {
   open: boolean;
