@@ -207,8 +207,7 @@ export default function AgreementModal({
   const [hasUnderstood, setHasUnderstood] = useState(false);
   const [hasAgreed, setHasAgreed] = useState(false);
 
-  const allCheckboxesChecked =
-    hasRead && hasUnderstood && hasAgreed;
+  const allCheckboxesChecked = hasRead && hasUnderstood && hasAgreed;
 
   const handleConfirm = () => {
     if (allCheckboxesChecked) {

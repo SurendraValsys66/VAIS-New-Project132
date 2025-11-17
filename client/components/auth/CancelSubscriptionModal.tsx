@@ -94,32 +94,48 @@ export default function CancelSubscriptionModal({
                 Subscription Cancellation Confirmed
               </h2>
               <p className="text-gray-600 max-w-md">
-                Your subscription has been successfully cancelled. A confirmation email
-                has been sent to <span className="font-semibold text-gray-900">{email}</span>.
+                Your subscription has been successfully cancelled. A
+                confirmation email has been sent to{" "}
+                <span className="font-semibold text-gray-900">{email}</span>.
               </p>
             </div>
 
             {/* Details Box */}
             <div className="w-full bg-blue-50 border border-blue-200 rounded-lg p-4 space-y-3">
-              <h3 className="font-semibold text-gray-900 text-sm">What Happens Next</h3>
+              <h3 className="font-semibold text-gray-900 text-sm">
+                What Happens Next
+              </h3>
               <ul className="space-y-2 text-sm text-gray-700">
                 <li className="flex items-start gap-2">
                   <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="text-xs font-semibold text-blue-600">1</span>
+                    <span className="text-xs font-semibold text-blue-600">
+                      1
+                    </span>
                   </div>
-                  <span>Your access to the platform will be revoked immediately</span>
+                  <span>
+                    Your access to the platform will be revoked immediately
+                  </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="text-xs font-semibold text-blue-600">2</span>
+                    <span className="text-xs font-semibold text-blue-600">
+                      2
+                    </span>
                   </div>
-                  <span>Your data will be retained for 7 days before permanent deletion</span>
+                  <span>
+                    Your data will be retained for 7 days before permanent
+                    deletion
+                  </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="text-xs font-semibold text-blue-600">3</span>
+                    <span className="text-xs font-semibold text-blue-600">
+                      3
+                    </span>
                   </div>
-                  <span>All active sessions will be terminated for security</span>
+                  <span>
+                    All active sessions will be terminated for security
+                  </span>
                 </li>
               </ul>
             </div>
@@ -256,7 +272,10 @@ export default function CancelSubscriptionModal({
           <div className="space-y-4">
             {/* Email */}
             <div className="space-y-2">
-              <Label htmlFor="cancel-email" className="text-gray-700 flex items-center gap-2">
+              <Label
+                htmlFor="cancel-email"
+                className="text-gray-700 flex items-center gap-2"
+              >
                 <Mail className="w-4 h-4 text-valasys-orange" />
                 <span>Email Address</span>
               </Label>
@@ -294,12 +313,8 @@ export default function CancelSubscriptionModal({
                 rows={4}
               />
               <div className="flex items-center justify-between">
-                <p className="text-xs text-gray-600">
-                  Minimum 10 characters
-                </p>
-                <p className="text-xs text-gray-500">
-                  {reason.length}/500
-                </p>
+                <p className="text-xs text-gray-600">Minimum 10 characters</p>
+                <p className="text-xs text-gray-500">{reason.length}/500</p>
               </div>
             </div>
           </div>
