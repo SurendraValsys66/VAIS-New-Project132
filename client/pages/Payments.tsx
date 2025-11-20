@@ -293,18 +293,6 @@ function getCardGradient(cardNetwork?: string) {
   }
 }
 
-function getCardBorderGradient(cardNetwork?: string) {
-  switch (cardNetwork) {
-    case "Visa":
-      return "linear-gradient(135deg, #3b82f6, #1e40af)";
-    case "Mastercard":
-      return "linear-gradient(135deg, #ef4444, #f97316)";
-    case "American Express":
-      return "linear-gradient(135deg, #1e293b, #0f172a)";
-    default:
-      return "linear-gradient(135deg, #a855f7, #ec4899)";
-  }
-}
 
 function ModernPaymentCard({
   method,
