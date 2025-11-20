@@ -330,28 +330,17 @@ function ModernPaymentCard({
                 {getCardNetwork(method)}
               </div>
             </div>
-            <div className="flex items-center gap-2 flex-wrap justify-end">
+            <div className="flex items-center gap-2">
               {method.isDefault && (
-                <>
-                  <div className="bg-green-100 px-3 py-1.5 rounded-full border border-green-300">
-                    <span
-                      className="flex items-center gap-1.5 text-green-700 font-semibold"
-                      style={{ fontSize: "12px" }}
-                    >
-                      <span className="inline-flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
-                      Autopay enabled
-                    </span>
-                  </div>
-                  <div className="bg-blue-50 px-3 py-1.5 rounded-full border border-blue-300">
-                    <span
-                      className="flex items-center gap-1.5 text-blue-700 font-semibold"
-                      style={{ fontSize: "12px" }}
-                    >
-                      <CheckCircle className="w-3.5 h-3.5" />
-                      Default
-                    </span>
-                  </div>
-                </>
+                <div className="bg-blue-50 px-3 py-1.5 rounded-full border border-blue-300">
+                  <span
+                    className="flex items-center gap-1.5 text-blue-700 font-semibold"
+                    style={{ fontSize: "12px" }}
+                  >
+                    <CheckCircle className="w-3.5 h-3.5" />
+                    Default
+                  </span>
+                </div>
               )}
               {!method.isDefault && (
                 <button
