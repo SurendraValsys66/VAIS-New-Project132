@@ -506,7 +506,7 @@ export default function BuildVAISForm() {
                 <TooltipTrigger asChild>
                   <Info className="w-3.5 h-3.5 ml-1.5 text-valasys-gray-400 hover:text-valasys-gray-600 cursor-help transition-colors" />
                 </TooltipTrigger>
-                <TooltipContent side="top" className="max-w-xs">
+                <TooltipContent side="right" avoidCollisions={true} className="max-w-xs">
                   <p className="text-xs leading-relaxed">
                     Our score is calculated using AI-powered analysis of prospect engagement signals, company firmographics, intent indicators, and historical conversion data to predict likelihood of successful engagement.
                   </p>
