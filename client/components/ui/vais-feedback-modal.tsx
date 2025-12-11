@@ -52,7 +52,7 @@ export function VAISFeedbackModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-sm bg-white p-0">
+      <DialogContent className="max-w-md bg-white p-0">
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
           <h2 className="text-lg font-semibold text-gray-900">
             Rate your experience! 👋
