@@ -1,15 +1,7 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import {
-  Bold,
-  Italic,
-  Strikethrough,
-  Link,
-  List,
-  ListOrdered,
-  Code,
-} from "lucide-react";
+import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 
@@ -17,34 +9,6 @@ interface FeedbackModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }
-
-const ratingEmojis = [
-  {
-    value: 1,
-    label: "Very Dissatisfied",
-    gif: "https://cdn.builder.io/o/assets%2Ff9a15ea1ed2e4a49812760317a321a66%2F0f494860515e4ea8b119bf8a87a3a604?alt=media&token=8f58c95d-f3d5-47f5-9175-9695960d477a&apiKey=f9a15ea1ed2e4a49812760317a321a66",
-  },
-  {
-    value: 2,
-    label: "Dissatisfied",
-    gif: "https://cdn.builder.io/o/assets%2Ff9a15ea1ed2e4a49812760317a321a66%2F159a388fa499458aa678a359ddcfd6be?alt=media&token=7bff03eb-2b43-4829-9e95-a58e3768ef87&apiKey=f9a15ea1ed2e4a49812760317a321a66",
-  },
-  {
-    value: 3,
-    label: "Neutral",
-    gif: "https://cdn.builder.io/o/assets%2Ff9a15ea1ed2e4a49812760317a321a66%2F7909ba7ecd4d4178951f1c721472172f?alt=media&token=0a419fc2-274f-4ce5-b0f4-e22442572b60&apiKey=f9a15ea1ed2e4a49812760317a321a66",
-  },
-  {
-    value: 4,
-    label: "Satisfied",
-    gif: "https://cdn.builder.io/o/assets%2Ff9a15ea1ed2e4a49812760317a321a66%2Fead231d28664412e85e3d27393b50511?alt=media&token=8b1c2a7e-101f-4174-8d43-24917fdd8cda&apiKey=f9a15ea1ed2e4a49812760317a321a66",
-  },
-  {
-    value: 5,
-    label: "Very Satisfied",
-    gif: "https://cdn.builder.io/o/assets%2Ff9a15ea1ed2e4a49812760317a321a66%2Fc3469c9a8c544795832c09459f70e473?alt=media&token=40f0a4db-707d-4a66-8858-b780198c8c07&apiKey=f9a15ea1ed2e4a49812760317a321a66",
-  },
-];
 
 export function FeedbackModal({ open, onOpenChange }: FeedbackModalProps) {
   const [rating, setRating] = useState<number | null>(3);
