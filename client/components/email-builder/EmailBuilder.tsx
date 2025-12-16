@@ -167,13 +167,19 @@ export const EmailBuilder: React.FC<EmailBuilderProps> = ({
                 Back
               </Button>
             )}
-            <div className="flex-1">
+            <div className="flex-1 max-w-md">
+              <div className="text-sm text-gray-600 mb-1">New template</div>
               <Input
                 value={templateName}
                 onChange={(e) => setTemplateName(e.target.value)}
                 placeholder="Template name"
-                className="font-semibold text-lg"
+                className="font-semibold text-lg border-0 px-0 focus-visible:ring-0"
               />
+            </div>
+            <div className="flex items-center gap-2 ml-4">
+              <span className="text-sm text-yellow-600 bg-yellow-50 px-3 py-1 rounded-full">
+                Unsaved changes
+              </span>
             </div>
           </div>
 
@@ -185,16 +191,14 @@ export const EmailBuilder: React.FC<EmailBuilderProps> = ({
               className={previewMode ? "bg-valasys-orange text-white" : ""}
             >
               <Eye className="w-4 h-4 mr-1" />
-              {previewMode ? "Edit" : "Preview"}
+              {previewMode ? "Edit" : "Preview & test"}
             </Button>
             <Button
-              variant="outline"
-              size="sm"
               onClick={() => setShowSaveDialog(true)}
-              className="gap-2"
+              className="gap-2 bg-valasys-orange hover:bg-valasys-orange/90 text-white"
             >
               <Save className="w-4 h-4" />
-              Save Template
+              Save & exit
             </Button>
           </div>
         </div>
