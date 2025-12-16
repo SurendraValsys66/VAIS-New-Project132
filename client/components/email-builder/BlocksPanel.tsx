@@ -49,6 +49,37 @@ interface BlockOption {
   onCreate: () => ContentBlock;
 }
 
+interface DraggableBlockProps {
+  block: BlockOption;
+}
+
+const DraggableBlockButton: React.FC<DraggableBlockProps> = ({ block }) => {
+  const [{ isDragging }, drag] = useDrag(() => ({
+    type: "block",
+    item: { block: block.onCreate() },
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging(),
+    }),
+  }));
+
+  return (
+    <button
+      ref={drag}
+      className={`flex flex-col items-center justify-center p-4 rounded-lg border border-gray-200 hover:border-valasys-orange hover:bg-orange-50 transition-all hover:shadow-md cursor-move ${
+        isDragging ? "opacity-50 scale-95" : ""
+      }`}
+    >
+      <div className="mb-2 relative">
+        {block.icon}
+        <div className="absolute -top-1 -right-1 text-valasys-orange">
+          <GripHorizontal className="w-3 h-3" />
+        </div>
+      </div>
+      <span className="text-sm font-medium text-gray-900">{block.label}</span>
+    </button>
+  );
+};
+
 export const BlocksPanel: React.FC<BlocksPanelProps> = ({ onAddBlock }) => {
   const [searchQuery, setSearchQuery] = useState("");
 
