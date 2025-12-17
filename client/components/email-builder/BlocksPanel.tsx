@@ -40,6 +40,9 @@ import {
   createPromoBlock,
   createStatsBlock,
   createFeaturesBlock,
+  createHeaderLogoAndDividerTemplate,
+  createHeaderLogoAndSocialTemplate,
+  createHeaderLogoAndNavigationTemplate,
 } from "./utils";
 import { ContentBlock } from "./types";
 
