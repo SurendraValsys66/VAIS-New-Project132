@@ -188,9 +188,9 @@ export default function MyDownloadedList() {
   const [bulkDeleteDialogOpen, setBulkDeleteDialogOpen] = useState(false);
   const [crmDialogOpen, setCrmDialogOpen] = useState(false);
   const [crmFile, setCrmFile] = useState<DownloadedFile | null>(null);
-  const [selectedCrm, setSelectedCrm] = useState<
-    "hubspot" | "salesforce"
-  >("hubspot");
+  const [selectedCrm, setSelectedCrm] = useState<"hubspot" | "salesforce">(
+    "hubspot",
+  );
   const [connectedCrms, setConnectedCrms] = useState<
     Array<"hubspot" | "salesforce">
   >([]);
@@ -719,7 +719,10 @@ export default function MyDownloadedList() {
                                   Send to CRM
                                 </Button>
                               </DropdownMenuTrigger>
-                              <DropdownMenuContent align="end" className="w-80 p-0 shadow-2xl rounded-xl border border-gray-200">
+                              <DropdownMenuContent
+                                align="end"
+                                className="w-80 p-0 shadow-2xl rounded-xl border border-gray-200"
+                              >
                                 {/* Salesforce Section */}
                                 <div className="px-3 pt-3 pb-2">
                                   <div className="px-3 py-2.5 rounded-lg bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200 mb-3 shadow-sm">
@@ -727,7 +730,9 @@ export default function MyDownloadedList() {
                                       <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-[#00A1E0] to-[#0088B8] text-white text-xs font-bold shadow-md">
                                         SF
                                       </span>
-                                      <span className="text-sm font-bold text-blue-900 tracking-tight">Salesforce</span>
+                                      <span className="text-sm font-bold text-blue-900 tracking-tight">
+                                        Salesforce
+                                      </span>
                                     </div>
                                   </div>
                                   <div className="space-y-1.5 mb-2.5">
@@ -749,7 +754,9 @@ export default function MyDownloadedList() {
                                           <div className="flex items-center justify-between w-full rounded-md border border-blue-200 bg-white px-3 py-2.5 hover:bg-blue-50 hover:border-blue-300 transition-colors">
                                             <div className="flex items-center gap-2 flex-1 cursor-pointer">
                                               <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
-                                              <span className="text-sm font-medium text-gray-900">{acc.name}</span>
+                                              <span className="text-sm font-medium text-gray-900">
+                                                {acc.name}
+                                              </span>
                                             </div>
                                             <button
                                               aria-label="Delete account"
@@ -781,7 +788,9 @@ export default function MyDownloadedList() {
                                   >
                                     <div className="w-full px-3 py-2.5 rounded-lg bg-gradient-to-r from-blue-100 to-blue-150 text-blue-700 hover:from-blue-200 hover:to-blue-250 border border-blue-400 hover:border-blue-500 flex items-center justify-center gap-2 transition-all cursor-pointer font-medium shadow-sm hover:shadow-md">
                                       <Plus className="h-4 w-4" />
-                                      <span className="text-sm font-semibold">Add Salesforce Account</span>
+                                      <span className="text-sm font-semibold">
+                                        Add Salesforce Account
+                                      </span>
                                     </div>
                                   </DropdownMenuItem>
                                 </div>
@@ -795,7 +804,9 @@ export default function MyDownloadedList() {
                                       <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-[#FF7A59] to-[#E85A38] text-white text-xs font-bold shadow-md">
                                         HS
                                       </span>
-                                      <span className="text-sm font-bold text-orange-900 tracking-tight">HubSpot</span>
+                                      <span className="text-sm font-bold text-orange-900 tracking-tight">
+                                        HubSpot
+                                      </span>
                                     </div>
                                   </div>
                                   <div className="space-y-1.5 mb-2.5">
@@ -817,7 +828,9 @@ export default function MyDownloadedList() {
                                           <div className="flex items-center justify-between w-full rounded-md border border-orange-200 bg-white px-3 py-2.5 hover:bg-orange-50 hover:border-orange-300 transition-colors">
                                             <div className="flex items-center gap-2 flex-1 cursor-pointer">
                                               <div className="w-1.5 h-1.5 rounded-full bg-orange-500"></div>
-                                              <span className="text-sm font-medium text-gray-900">{acc.name}</span>
+                                              <span className="text-sm font-medium text-gray-900">
+                                                {acc.name}
+                                              </span>
                                             </div>
                                             <button
                                               aria-label="Delete account"
@@ -849,13 +862,14 @@ export default function MyDownloadedList() {
                                   >
                                     <div className="w-full px-3 py-2.5 rounded-lg bg-gradient-to-r from-orange-100 to-orange-150 text-orange-700 hover:from-orange-200 hover:to-orange-250 border border-orange-400 hover:border-orange-500 flex items-center justify-center gap-2 transition-all cursor-pointer font-medium shadow-sm hover:shadow-md">
                                       <Plus className="h-4 w-4" />
-                                      <span className="text-sm font-semibold">Add HubSpot Account</span>
+                                      <span className="text-sm font-semibold">
+                                        Add HubSpot Account
+                                      </span>
                                     </div>
                                   </DropdownMenuItem>
                                 </div>
 
                                 <DropdownMenuSeparator className="my-2" />
-
                               </DropdownMenuContent>
                             </DropdownMenu>
                           </div>
@@ -1317,9 +1331,7 @@ export default function MyDownloadedList() {
                 <div>
                   <DialogTitle>
                     Send to{" "}
-                    {selectedCrm === "hubspot"
-                      ? "HubSpot"
-                      : "Salesforce"}
+                    {selectedCrm === "hubspot" ? "HubSpot" : "Salesforce"}
                   </DialogTitle>
                   <DialogDescription className="mt-1">
                     Import CSV file "{crmFile?.fileName}" with{" "}
@@ -1341,7 +1353,8 @@ export default function MyDownloadedList() {
                         No connected CRM account
                       </p>
                       <p className="text-blue-800 text-sm mt-1.5 leading-relaxed">
-                        You can import the CSV manually by following the guided steps below, or connect a CRM for one-click uploads.
+                        You can import the CSV manually by following the guided
+                        steps below, or connect a CRM for one-click uploads.
                       </p>
                     </div>
                   </div>
@@ -1416,7 +1429,9 @@ export default function MyDownloadedList() {
                         <div className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2">
                           Step 1
                         </div>
-                        <CardTitle className="text-base font-bold text-gray-900">Select CRM Account</CardTitle>
+                        <CardTitle className="text-base font-bold text-gray-900">
+                          Select CRM Account
+                        </CardTitle>
                       </div>
                       <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white text-xs font-bold shadow-lg">
                         1
@@ -1434,9 +1449,7 @@ export default function MyDownloadedList() {
                       <SelectContent>
                         {connectedCrms.map((c) => (
                           <SelectItem key={c} value={c}>
-                            {c === "hubspot"
-                              ? "HubSpot"
-                              : "Salesforce"}
+                            {c === "hubspot" ? "HubSpot" : "Salesforce"}
                           </SelectItem>
                         ))}
                       </SelectContent>
@@ -1453,7 +1466,9 @@ export default function MyDownloadedList() {
                         <div className="text-xs font-bold text-orange-600 uppercase tracking-widest mb-2">
                           Step 2
                         </div>
-                        <CardTitle className="text-base font-bold text-gray-900">Upload Data</CardTitle>
+                        <CardTitle className="text-base font-bold text-gray-900">
+                          Upload Data
+                        </CardTitle>
                       </div>
                       <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 text-white text-xs font-bold shadow-lg">
                         2
@@ -1491,9 +1506,7 @@ export default function MyDownloadedList() {
                         <>
                           <UploadCloud className="h-4 w-4 mr-2" />
                           Upload to{" "}
-                          {selectedCrm === "hubspot"
-                            ? "HubSpot"
-                            : "Salesforce"}
+                          {selectedCrm === "hubspot" ? "HubSpot" : "Salesforce"}
                         </>
                       )}
                     </Button>
@@ -1509,7 +1522,9 @@ export default function MyDownloadedList() {
                         <div className="text-xs font-bold text-green-600 uppercase tracking-widest mb-2">
                           Step 3
                         </div>
-                        <CardTitle className="text-base font-bold text-gray-900">Verify & Done</CardTitle>
+                        <CardTitle className="text-base font-bold text-gray-900">
+                          Verify & Done
+                        </CardTitle>
                       </div>
                       <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-green-500 to-green-600 text-white text-xs font-bold shadow-lg">
                         3
@@ -1534,12 +1549,15 @@ export default function MyDownloadedList() {
                         rel="noreferrer"
                       >
                         <span>Open</span>
-                        {selectedCrm === "hubspot"
-                          ? "HubSpot"
-                          : "Salesforce"}
+                        {selectedCrm === "hubspot" ? "HubSpot" : "Salesforce"}
                       </a>
                     </Button>
-                    <Button asChild variant="outline" size="sm" className="border-gray-300">
+                    <Button
+                      asChild
+                      variant="outline"
+                      size="sm"
+                      className="border-gray-300"
+                    >
                       <a
                         href={
                           selectedCrm === "hubspot"
@@ -1566,9 +1584,7 @@ export default function MyDownloadedList() {
                 <ShieldCheck className="h-3 w-3 mr-1.5" />
                 De-duplication by Email
               </Badge>
-              <Badge
-                className="bg-valasys-orange/10 text-valasys-orange border border-valasys-orange/30 rounded-full px-3 py-1"
-              >
+              <Badge className="bg-valasys-orange/10 text-valasys-orange border border-valasys-orange/30 rounded-full px-3 py-1">
                 {selectedCrm === "hubspot"
                   ? "📊 HubSpot Import"
                   : "☁️ Salesforce Import"}
