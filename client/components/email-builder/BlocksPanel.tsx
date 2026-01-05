@@ -88,7 +88,7 @@ const DraggableBlockButton: React.FC<DraggableBlockProps> = ({ block }) => {
     >
       <div className="mb-2 relative">
         {block.icon}
-        <div className="absolute -top-1 -right-1 text-valasys-orange">
+        <div className="absolute -top-2 left-1/2 -translate-x-1/2 text-valasys-orange">
           <GripHorizontal className="w-3 h-3" />
         </div>
       </div>
