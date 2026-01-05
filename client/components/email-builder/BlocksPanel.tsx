@@ -346,12 +346,12 @@ const SectionsPanel: React.FC<SectionsPanelProps> = ({ onAddBlock }) => {
               </span>
               <ChevronDown
                 className={`w-5 h-5 text-gray-600 transition-transform ${
-                  expandedSection === section.title ? "rotate-180" : ""
+                  expandedSections.has(section.title) ? "rotate-180" : ""
                 }`}
               />
             </button>
 
-            {expandedSection === section.title && (
+            {expandedSections.has(section.title) && (
               <div className="px-4 py-3 bg-gray-50 border-t border-gray-200">
                 {section.templates ? (
                   <div className="flex flex-col gap-3">
