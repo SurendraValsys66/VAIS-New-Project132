@@ -77,19 +77,22 @@ export const LandingPagePreview: React.FC<LandingPagePreviewProps> = ({
     return (
       <div
         key={block.id}
-        className={`relative mb-4 transition-all ${
-          isSelected ? "ring-2 ring-valasys-orange" : ""
+        className={`relative mb-4 transition-all rounded cursor-pointer group ${
+          isSelected
+            ? "ring-2 ring-valasys-orange shadow-lg"
+            : "hover:shadow-md"
         }`}
         onClick={() => onSelectBlock(block.id)}
       >
         {blockContent}
 
         {isSelected && (
-          <div className="absolute top-2 right-2 flex gap-2 bg-white rounded-lg shadow-lg p-1 z-10">
+          <div className="absolute top-2 right-2 flex gap-2 bg-white rounded-lg shadow-lg p-1 z-20">
             <Button
               size="sm"
               variant="ghost"
               className="h-8 w-8 p-0 hover:bg-gray-100"
+              title="Move up"
               onClick={(e) => {
                 e.stopPropagation();
                 if (canMoveUp) onMoveBlock(block.id, "up");
@@ -102,6 +105,7 @@ export const LandingPagePreview: React.FC<LandingPagePreviewProps> = ({
               size="sm"
               variant="ghost"
               className="h-8 w-8 p-0 hover:bg-gray-100"
+              title="Move down"
               onClick={(e) => {
                 e.stopPropagation();
                 if (canMoveDown) onMoveBlock(block.id, "down");
@@ -114,6 +118,7 @@ export const LandingPagePreview: React.FC<LandingPagePreviewProps> = ({
               size="sm"
               variant="ghost"
               className="h-8 w-8 p-0 hover:bg-red-50 hover:text-red-600"
+              title="Delete block"
               onClick={(e) => {
                 e.stopPropagation();
                 onDeleteBlock(block.id);
