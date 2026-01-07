@@ -390,65 +390,6 @@ export const BlocksPanel: React.FC<BlocksPanelProps> = ({ onAddBlock, onSelectBl
         </div>
       </div>
 
-      {/* Modal Overlay */}
-      {selectedVariantGroup && selectedVariantGroup.variants && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col">
-            {/* Modal Header */}
-            <div className="border-b border-gray-200 px-6 py-4 flex items-center justify-between flex-shrink-0">
-              <div>
-                <h2 className="text-lg font-semibold text-gray-900">
-                  {selectedVariantGroup.label}
-                </h2>
-                <p className="text-sm text-gray-500 mt-1">
-                  Choose a layout to add to your page
-                </p>
-              </div>
-              <button
-                onClick={() => setSelectedVariantGroup(null)}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-              >
-                <X className="w-5 h-5 text-gray-500" />
-              </button>
-            </div>
-
-            {/* Modal Content */}
-            <div className="flex-1 overflow-y-auto p-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {selectedVariantGroup.variants.map((variant) => (
-                  <button
-                    key={variant.id}
-                    onClick={() => handleVariantClick(variant)}
-                    className="group relative bg-white border-2 border-gray-100 rounded-lg overflow-hidden hover:border-valasys-orange transition-all hover:shadow-lg"
-                  >
-                    {/* Preview Area */}
-                    <div className="aspect-square bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center min-h-48">
-                      <div className="text-center">
-                        <div className="w-12 h-12 bg-gray-200 rounded-lg mx-auto mb-2 group-hover:bg-orange-100 transition-colors"></div>
-                        <p className="text-sm text-gray-400 group-hover:text-valasys-orange transition-colors">
-                          Preview
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Variant Info */}
-                    <div className="p-4 bg-white">
-                      <h3 className="font-semibold text-gray-900 text-sm">
-                        {variant.name}
-                      </h3>
-                      {variant.description && (
-                        <p className="text-xs text-gray-500 mt-1">
-                          {variant.description}
-                        </p>
-                      )}
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 };
