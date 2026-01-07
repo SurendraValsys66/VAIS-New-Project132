@@ -494,7 +494,7 @@ export const BlocksPanel: React.FC<BlocksPanelProps> = ({ onAddBlock }) => {
   return (
     <div className="flex flex-col bg-white border-r border-gray-200 w-full">
       <Tabs defaultValue="blocks" className="flex flex-col">
-        <TabsList className="flex w-full h-auto rounded-none border-b border-gray-200 bg-white p-0">
+        <TabsList className="sticky top-0 z-20 flex w-full h-auto rounded-none border-b border-gray-200 bg-white p-0">
           <TabsTrigger
             value="blocks"
             className="flex-1 rounded-none px-4 py-3 text-gray-600 border-b-2 border-transparent data-[state=active]:border-valasys-orange data-[state=active]:text-gray-900 data-[state=active]:bg-white shadow-none"
@@ -516,7 +516,7 @@ export const BlocksPanel: React.FC<BlocksPanelProps> = ({ onAddBlock }) => {
         </TabsList>
 
         <TabsContent value="blocks" className="flex flex-col m-0">
-          <div className="p-4 border-b border-gray-200 sticky top-0 bg-white z-10">
+          <div className="p-4 border-b border-gray-200 sticky top-[52px] bg-white z-20">
             <Input
               placeholder="Search blocks..."
               value={searchQuery}

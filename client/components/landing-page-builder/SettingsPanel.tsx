@@ -1,0 +1,546 @@
+import React, { useState } from "react";
+import { LandingPageBlock } from "./types";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { Trash2 } from "lucide-react";
+
+interface SettingsPanelProps {
+  block: LandingPageBlock | null;
+  onBlockUpdate: (block: LandingPageBlock) => void;
+  onBlockDelete: () => void;
+}
+
+export const SettingsPanel: React.FC<SettingsPanelProps> = ({
+  block,
+  onBlockUpdate,
+  onBlockDelete,
+}) => {
+  if (!block) {
+    return (
+      <div className="bg-white border-l border-gray-200 p-4 h-full flex items-center justify-center">
+        <p className="text-gray-500 text-sm">Select a block to edit</p>
+      </div>
+    );
+  }
+
+  const renderSettings = () => {
+    const props = block.properties;
+
+    switch (block.type) {
+      case "header":
+        return (
+          <div className="space-y-5">
+            <div>
+              <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                Logo Text
+              </Label>
+              <Input
+                type="text"
+                value={props.logoText || ""}
+                onChange={(e) =>
+                  onBlockUpdate({
+                    ...block,
+                    properties: { ...props, logoText: e.target.value },
+                  })
+                }
+                className="focus:ring-valasys-orange focus:ring-2"
+              />
+            </div>
+            <div>
+              <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                CTA Button Text
+              </Label>
+              <Input
+                type="text"
+                value={props.ctaButtonText || ""}
+                onChange={(e) =>
+                  onBlockUpdate({
+                    ...block,
+                    properties: { ...props, ctaButtonText: e.target.value },
+                  })
+                }
+                className="focus:ring-valasys-orange focus:ring-2"
+              />
+            </div>
+          </div>
+        );
+
+      case "hero":
+        return (
+          <div className="space-y-5">
+            <div>
+              <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                Headline
+              </Label>
+              <Input
+                type="text"
+                value={props.headline || ""}
+                onChange={(e) =>
+                  onBlockUpdate({
+                    ...block,
+                    properties: { ...props, headline: e.target.value },
+                  })
+                }
+                className="focus:ring-valasys-orange focus:ring-2"
+              />
+            </div>
+            <div>
+              <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                Subheading
+              </Label>
+              <Input
+                type="text"
+                value={props.subheading || ""}
+                onChange={(e) =>
+                  onBlockUpdate({
+                    ...block,
+                    properties: { ...props, subheading: e.target.value },
+                  })
+                }
+                className="focus:ring-valasys-orange focus:ring-2"
+              />
+            </div>
+            <div>
+              <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                CTA Button Text
+              </Label>
+              <Input
+                type="text"
+                value={props.ctaButtonText || ""}
+                onChange={(e) =>
+                  onBlockUpdate({
+                    ...block,
+                    properties: { ...props, ctaButtonText: e.target.value },
+                  })
+                }
+                className="focus:ring-valasys-orange focus:ring-2"
+              />
+            </div>
+            <div>
+              <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                Background Color
+              </Label>
+              <div className="flex gap-2">
+                <Input
+                  type="color"
+                  value={props.backgroundColor || "#f3f4f6"}
+                  onChange={(e) =>
+                    onBlockUpdate({
+                      ...block,
+                      properties: { ...props, backgroundColor: e.target.value },
+                    })
+                  }
+                  className="w-12 h-10 cursor-pointer"
+                />
+                <Input
+                  type="text"
+                  value={props.backgroundColor || "#f3f4f6"}
+                  onChange={(e) =>
+                    onBlockUpdate({
+                      ...block,
+                      properties: { ...props, backgroundColor: e.target.value },
+                    })
+                  }
+                  className="flex-1 focus:ring-valasys-orange focus:ring-2"
+                />
+              </div>
+            </div>
+            <div>
+              <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                Min Height (px)
+              </Label>
+              <Input
+                type="text"
+                value={props.minHeight || "500px"}
+                onChange={(e) =>
+                  onBlockUpdate({
+                    ...block,
+                    properties: { ...props, minHeight: e.target.value },
+                  })
+                }
+                className="focus:ring-valasys-orange focus:ring-2"
+              />
+            </div>
+          </div>
+        );
+
+      case "features":
+        return (
+          <div className="space-y-5">
+            <div>
+              <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                Heading
+              </Label>
+              <Input
+                type="text"
+                value={props.heading || ""}
+                onChange={(e) =>
+                  onBlockUpdate({
+                    ...block,
+                    properties: { ...props, heading: e.target.value },
+                  })
+                }
+                className="focus:ring-valasys-orange focus:ring-2"
+              />
+            </div>
+            <div>
+              <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                Description
+              </Label>
+              <textarea
+                value={props.description || ""}
+                onChange={(e) =>
+                  onBlockUpdate({
+                    ...block,
+                    properties: { ...props, description: e.target.value },
+                  })
+                }
+                className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-valasys-orange focus:border-transparent"
+                rows={3}
+              />
+            </div>
+            <div>
+              <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                Columns
+              </Label>
+              <select
+                value={props.columns || 4}
+                onChange={(e) =>
+                  onBlockUpdate({
+                    ...block,
+                    properties: { ...props, columns: parseInt(e.target.value) },
+                  })
+                }
+                className="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-valasys-orange"
+              >
+                <option value={3}>3 Columns</option>
+                <option value={4}>4 Columns</option>
+              </select>
+            </div>
+          </div>
+        );
+
+      case "testimonials":
+        return (
+          <div className="space-y-5">
+            <div>
+              <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                Section Heading
+              </Label>
+              <Input
+                type="text"
+                value={props.heading || ""}
+                onChange={(e) =>
+                  onBlockUpdate({
+                    ...block,
+                    properties: { ...props, heading: e.target.value },
+                  })
+                }
+                className="focus:ring-valasys-orange focus:ring-2"
+              />
+            </div>
+            <div className="p-3 bg-blue-50 rounded border border-blue-200">
+              <p className="text-xs text-blue-700">
+                💡 Testimonials can be edited by selecting individual
+                testimonials
+              </p>
+            </div>
+          </div>
+        );
+
+      case "about":
+        return (
+          <div className="space-y-5">
+            <div>
+              <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                Heading
+              </Label>
+              <Input
+                type="text"
+                value={props.heading || ""}
+                onChange={(e) =>
+                  onBlockUpdate({
+                    ...block,
+                    properties: { ...props, heading: e.target.value },
+                  })
+                }
+                className="focus:ring-valasys-orange focus:ring-2"
+              />
+            </div>
+            <div>
+              <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                Content
+              </Label>
+              <textarea
+                value={props.content || ""}
+                onChange={(e) =>
+                  onBlockUpdate({
+                    ...block,
+                    properties: { ...props, content: e.target.value },
+                  })
+                }
+                className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-valasys-orange focus:border-transparent"
+                rows={4}
+              />
+            </div>
+            <div>
+              <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                Image Position
+              </Label>
+              <select
+                value={props.imagePosition || "right"}
+                onChange={(e) =>
+                  onBlockUpdate({
+                    ...block,
+                    properties: { ...props, imagePosition: e.target.value },
+                  })
+                }
+                className="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-valasys-orange"
+              >
+                <option value="left">Left</option>
+                <option value="right">Right</option>
+              </select>
+            </div>
+            <div>
+              <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                CTA Text
+              </Label>
+              <Input
+                type="text"
+                value={props.cta?.text || ""}
+                onChange={(e) =>
+                  onBlockUpdate({
+                    ...block,
+                    properties: {
+                      ...props,
+                      cta: { ...props.cta, text: e.target.value },
+                    },
+                  })
+                }
+                className="focus:ring-valasys-orange focus:ring-2"
+              />
+            </div>
+          </div>
+        );
+
+      case "contact-form":
+        return (
+          <div className="space-y-5">
+            <div>
+              <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                Heading
+              </Label>
+              <Input
+                type="text"
+                value={props.heading || ""}
+                onChange={(e) =>
+                  onBlockUpdate({
+                    ...block,
+                    properties: { ...props, heading: e.target.value },
+                  })
+                }
+                className="focus:ring-valasys-orange focus:ring-2"
+              />
+            </div>
+            <div>
+              <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                Description
+              </Label>
+              <Input
+                type="text"
+                value={props.description || ""}
+                onChange={(e) =>
+                  onBlockUpdate({
+                    ...block,
+                    properties: { ...props, description: e.target.value },
+                  })
+                }
+                className="focus:ring-valasys-orange focus:ring-2"
+              />
+            </div>
+            <div>
+              <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                Submit Button Text
+              </Label>
+              <Input
+                type="text"
+                value={props.submitButtonText || ""}
+                onChange={(e) =>
+                  onBlockUpdate({
+                    ...block,
+                    properties: { ...props, submitButtonText: e.target.value },
+                  })
+                }
+                className="focus:ring-valasys-orange focus:ring-2"
+              />
+            </div>
+            <div>
+              <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                Button Color
+              </Label>
+              <div className="flex gap-2">
+                <Input
+                  type="color"
+                  value={props.submitButtonColor || "#FF6A00"}
+                  onChange={(e) =>
+                    onBlockUpdate({
+                      ...block,
+                      properties: {
+                        ...props,
+                        submitButtonColor: e.target.value,
+                      },
+                    })
+                  }
+                  className="w-12 h-10 cursor-pointer"
+                />
+                <Input
+                  type="text"
+                  value={props.submitButtonColor || "#FF6A00"}
+                  onChange={(e) =>
+                    onBlockUpdate({
+                      ...block,
+                      properties: {
+                        ...props,
+                        submitButtonColor: e.target.value,
+                      },
+                    })
+                  }
+                  className="flex-1 focus:ring-valasys-orange focus:ring-2"
+                />
+              </div>
+            </div>
+          </div>
+        );
+
+      case "footer":
+        return (
+          <div className="space-y-5">
+            <div>
+              <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                Company Name
+              </Label>
+              <Input
+                type="text"
+                value={props.companyName || ""}
+                onChange={(e) =>
+                  onBlockUpdate({
+                    ...block,
+                    properties: { ...props, companyName: e.target.value },
+                  })
+                }
+                className="focus:ring-valasys-orange focus:ring-2"
+              />
+            </div>
+            <div>
+              <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                Description
+              </Label>
+              <textarea
+                value={props.companyDescription || ""}
+                onChange={(e) =>
+                  onBlockUpdate({
+                    ...block,
+                    properties: {
+                      ...props,
+                      companyDescription: e.target.value,
+                    },
+                  })
+                }
+                className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-valasys-orange focus:border-transparent"
+                rows={2}
+              />
+            </div>
+            <div>
+              <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                Email
+              </Label>
+              <Input
+                type="email"
+                value={props.contactInfo?.email || ""}
+                onChange={(e) =>
+                  onBlockUpdate({
+                    ...block,
+                    properties: {
+                      ...props,
+                      contactInfo: {
+                        ...props.contactInfo,
+                        email: e.target.value,
+                      },
+                    },
+                  })
+                }
+                className="focus:ring-valasys-orange focus:ring-2"
+              />
+            </div>
+            <div>
+              <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                Phone
+              </Label>
+              <Input
+                type="text"
+                value={props.contactInfo?.phone || ""}
+                onChange={(e) =>
+                  onBlockUpdate({
+                    ...block,
+                    properties: {
+                      ...props,
+                      contactInfo: {
+                        ...props.contactInfo,
+                        phone: e.target.value,
+                      },
+                    },
+                  })
+                }
+                className="focus:ring-valasys-orange focus:ring-2"
+              />
+            </div>
+          </div>
+        );
+
+      case "section-spacer":
+        return (
+          <div className="space-y-5">
+            <div>
+              <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                Height (px)
+              </Label>
+              <Input
+                type="text"
+                value={props.height || "60px"}
+                onChange={(e) =>
+                  onBlockUpdate({
+                    ...block,
+                    properties: { ...props, height: e.target.value },
+                  })
+                }
+                className="focus:ring-valasys-orange focus:ring-2"
+              />
+            </div>
+          </div>
+        );
+
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className="bg-white border-l border-gray-200 h-full flex flex-col overflow-hidden">
+      <div className="sticky top-0 bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between flex-shrink-0">
+        <h3 className="font-semibold text-gray-900 text-sm capitalize">
+          {block.type.replace("-", " ")}
+        </h3>
+        <Button
+          size="sm"
+          variant="ghost"
+          className="h-8 w-8 p-0 hover:bg-red-50 hover:text-red-600"
+          onClick={onBlockDelete}
+        >
+          <Trash2 className="w-4 h-4" />
+        </Button>
+      </div>
+      <div className="p-4 overflow-y-auto flex-1">{renderSettings()}</div>
+    </div>
+  );
+};
