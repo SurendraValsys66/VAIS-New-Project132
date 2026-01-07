@@ -25,6 +25,7 @@ import { LandingPageBlock } from "./types";
 interface BlocksPanelProps {
   onAddBlock: (block: LandingPageBlock) => void;
   onSelectBlockVariant?: (variantName: string) => void;
+  onOpenSectionsPanel?: () => void;
 }
 
 interface BlockVariant {
