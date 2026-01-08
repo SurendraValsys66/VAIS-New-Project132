@@ -132,15 +132,10 @@ export const LandingPageBuilder: React.FC<LandingPageBuilderProps> = ({
   const handleSelectTemplate = (blocks: LandingPageBlock[]) => {
     if (!page) return;
 
-    // Add all blocks from the template to the page
-    blocks.forEach((block) => {
-      setPage((prevPage) => {
-        if (!prevPage) return prevPage;
-        return {
-          ...prevPage,
-          blocks: [...prevPage.blocks, block],
-        };
-      });
+    // Add all blocks from the template to the page at once
+    setPage({
+      ...page,
+      blocks: [...page.blocks, ...blocks],
     });
 
     setIsSectionsPanelOpen(false);
