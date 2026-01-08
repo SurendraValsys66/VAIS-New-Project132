@@ -43,22 +43,14 @@ export const LandingPageBuilder: React.FC<LandingPageBuilderProps> = ({
         setPageName(foundPage.name);
       }
     } else {
-      // Create a new page with default blocks
+      // Create a new page with no default blocks
       const newPage: LandingPage = {
         id: `lp-${Date.now()}`,
         name: "Untitled Landing Page",
         description: "A new landing page",
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
-        blocks: [
-          createHeaderBlock(),
-          createHeroBlock(),
-          createFeaturesBlock(),
-          createTestimonialsBlock(),
-          createAboutBlock(),
-          createContactFormBlock(),
-          createFooterBlock(),
-        ],
+        blocks: [],
       };
       setPage(newPage);
       setPageName(newPage.name);
@@ -125,26 +117,16 @@ export const LandingPageBuilder: React.FC<LandingPageBuilderProps> = ({
     });
   };
 
-  const handleSelectTemplate = (templateId: string) => {
-    // Map template IDs to actual blocks
-    const templateBlockMap: Record<string, () => LandingPageBlock> = {
-      "template-1": createHeroBlock,
-      "template-2": createHeroBlock,
-      "template-3": createFeaturesBlock,
-      "template-4": createAboutBlock,
-      "template-5": createAboutBlock,
-      "template-6": createFeaturesBlock,
-      "template-7": createFeaturesBlock,
-      "template-8": createHeaderBlock,
-      "template-9": createTestimonialsBlock,
-    };
+  const handleSelectTemplate = (blocks: LandingPageBlock[]) => {
+    if (!page) return;
 
-    const blockCreator = templateBlockMap[templateId];
-    if (blockCreator && page) {
-      const newBlock = blockCreator();
-      handleAddBlock(newBlock);
-      setIsSectionsPanelOpen(false);
-    }
+    // Add all blocks from the template to the page at once
+    setPage({
+      ...page,
+      blocks: [...page.blocks, ...blocks],
+    });
+
+    setIsSectionsPanelOpen(false);
   };
 
   const handleSave = async () => {

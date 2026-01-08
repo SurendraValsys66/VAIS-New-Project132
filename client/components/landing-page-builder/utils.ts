@@ -187,6 +187,197 @@ export const createSectionSpacerBlock = (): LandingPageBlock => ({
   },
 });
 
+export const createPricingBlock = (): LandingPageBlock => ({
+  id: `pricing-${Date.now()}`,
+  type: "pricing",
+  properties: {
+    heading: "Pricing",
+    subheading: "Subtitle.",
+    backgroundColor: "#ffffff",
+    pricingTiers: [
+      {
+        id: "tier-1",
+        name: "Starter",
+        price: "$0",
+        description: "Features",
+        features: ["1 User", "5 Projects", "Basic Support"],
+        buttonText: "Sign up",
+        buttonColor: "#f3f4f6",
+        buttonTextColor: "#111827",
+      },
+      {
+        id: "tier-2",
+        name: "Professional",
+        price: "$20",
+        description: "Features",
+        features: ["5 Users", "50 Projects", "Priority Support"],
+        buttonText: "Get In",
+        buttonColor: "#111827",
+        buttonTextColor: "#ffffff",
+        isHighlighted: true,
+      },
+      {
+        id: "tier-3",
+        name: "Enterprise",
+        price: "$40",
+        description: "Features",
+        features: ["Unlimited Users", "Unlimited Projects", "24/7 Support"],
+        buttonText: "Sign up",
+        buttonColor: "#f3f4f6",
+        buttonTextColor: "#111827",
+      },
+    ],
+  },
+});
+
+export const createFaqBlock = (): LandingPageBlock => ({
+  id: `faq-${Date.now()}`,
+  type: "faq",
+  properties: {
+    heading: "Frequently Asked Questions",
+    backgroundColor: "#ffffff",
+    faqs: [
+      {
+        id: "faq-1",
+        question: "How do frames work?",
+        answer:
+          "Frames are containers that help you organize and structure your designs. They work by grouping related elements together.",
+      },
+      {
+        id: "faq-2",
+        question: "How do code pages?",
+        answer:
+          "Code pages allow you to write custom code for advanced functionality. You can add HTML, CSS, and JavaScript.",
+      },
+      {
+        id: "faq-3",
+        question: "How do features work?",
+        answer:
+          "Features are built-in functionalities that you can enable or disable based on your needs.",
+      },
+    ],
+  },
+});
+
+export const createSignupBlock = (): LandingPageBlock => ({
+  id: `signup-${Date.now()}`,
+  type: "signup",
+  properties: {
+    heading: "Stay in the loop.",
+    subheading: "Sign up now.",
+    backgroundColor: "#ffffff",
+    inputPlaceholder: "Enter your email",
+    buttonText: "Sign up",
+    buttonColor: "#111827",
+    buttonTextColor: "#ffffff",
+  },
+});
+
+export const createPricingFooterBlock = (): LandingPageBlock => ({
+  id: `pricing-footer-${Date.now()}`,
+  type: "pricing-footer",
+  properties: {
+    backgroundColor: "#ffffff",
+    columns: [
+      {
+        id: "col-1",
+        title: "Product",
+        links: [
+          { label: "Solutions", href: "#" },
+          { label: "Contacts", href: "#" },
+        ],
+      },
+      {
+        id: "col-2",
+        title: "Resources",
+        links: [
+          { label: "Docs", href: "#" },
+          { label: "Help", href: "#" },
+        ],
+      },
+      {
+        id: "col-3",
+        title: "Company",
+        links: [
+          { label: "Support", href: "#" },
+          { label: "Blog", href: "#" },
+        ],
+      },
+    ],
+  },
+});
+
+// Template block creators that return arrays of blocks
+export const createMeetFramerTemplate = (): LandingPageBlock[] => [
+  createHeroBlock(),
+];
+
+export const createMeetFramerWithButtonsTemplate = (): LandingPageBlock[] => [
+  {
+    id: `hero-with-buttons-${Date.now()}`,
+    type: "hero",
+    properties: {
+      backgroundImageUrl: "",
+      backgroundType: "color",
+      backgroundColor: "#ffffff",
+      gradientStart: "#ffffff",
+      gradientEnd: "#f3f4f6",
+      headline: "Meet Framer",
+      subheading: "Internet canvas.",
+      ctaButtonText: "Sign Up",
+      ctaButtonLink: "#signup",
+      ctaButtonColor: "#111827",
+      minHeight: "400px",
+      secondaryButtonText: "Download",
+      secondaryButtonLink: "#download",
+      secondaryButtonColor: "#f3f4f6",
+      secondaryButtonTextColor: "#111827",
+    },
+  },
+];
+
+export const createLogoTemplate = (): LandingPageBlock[] => [
+  createFeaturesBlock(),
+];
+
+export const createInfiniteCanvasTemplate = (): LandingPageBlock[] => [
+  createAboutBlock(),
+];
+
+export const createInfiniteCanvasTwoColumnTemplate = (): LandingPageBlock[] => [
+  createAboutBlock(),
+];
+
+export const createCanvasPublishTemplate = (): LandingPageBlock[] => [
+  createFeaturesBlock(),
+];
+
+export const createThreeColumnTemplate = (): LandingPageBlock[] => [
+  createFeaturesBlock(),
+];
+
+export const createStatisticsTemplate = (): LandingPageBlock[] => [
+  createHeaderBlock(),
+];
+
+export const createTestimonialTemplate = (): LandingPageBlock[] => [
+  createTestimonialsBlock(),
+];
+
+export const createPricingTemplate = (): LandingPageBlock[] => [
+  createPricingBlock(),
+];
+
+export const createFaqTemplate = (): LandingPageBlock[] => [createFaqBlock()];
+
+export const createSignupTemplate = (): LandingPageBlock[] => [
+  createSignupBlock(),
+];
+
+export const createPricingFooterTemplate = (): LandingPageBlock[] => [
+  createPricingFooterBlock(),
+];
+
 // Local storage functions
 export const getLandingPagesFromLocalStorage = (): LandingPage[] => {
   try {
@@ -216,7 +407,10 @@ export const deleteLandingPageFromLocalStorage = (id: string): void => {
   localStorage.setItem(LANDING_PAGES_STORAGE_KEY, JSON.stringify(filtered));
 };
 
-export const createNewLandingPage = (name: string, description: string): LandingPage => ({
+export const createNewLandingPage = (
+  name: string,
+  description: string,
+): LandingPage => ({
   id: `lp-${Date.now()}`,
   name,
   description,

@@ -1,16 +1,33 @@
 import React, { useState } from "react";
 import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { LandingPageBlock } from "./types";
+import {
+  createMeetFramerTemplate,
+  createMeetFramerWithButtonsTemplate,
+  createLogoTemplate,
+  createInfiniteCanvasTemplate,
+  createInfiniteCanvasTwoColumnTemplate,
+  createCanvasPublishTemplate,
+  createThreeColumnTemplate,
+  createStatisticsTemplate,
+  createTestimonialTemplate,
+  createPricingTemplate,
+  createFaqTemplate,
+  createSignupTemplate,
+  createPricingFooterTemplate,
+} from "./utils";
 
 interface SectionTemplate {
   id: string;
   name: string;
   description: string;
   preview: React.ReactNode;
+  blocks: () => LandingPageBlock[];
 }
 
 interface SectionsPanelProps {
-  onSelectTemplate: (templateId: string) => void;
+  onSelectTemplate: (blocks: LandingPageBlock[]) => void;
   onBack: () => void;
 }
 
@@ -28,6 +45,7 @@ const sectionTemplates: SectionTemplate[] = [
         <div className="w-full h-16 bg-gray-100 rounded-lg"></div>
       </div>
     ),
+    blocks: createMeetFramerTemplate,
   },
   {
     id: "template-2",
@@ -49,6 +67,7 @@ const sectionTemplates: SectionTemplate[] = [
         </div>
       </div>
     ),
+    blocks: createMeetFramerWithButtonsTemplate,
   },
   {
     id: "template-3",
@@ -72,6 +91,7 @@ const sectionTemplates: SectionTemplate[] = [
         </div>
       </div>
     ),
+    blocks: createLogoTemplate,
   },
   {
     id: "template-4",
@@ -93,6 +113,7 @@ const sectionTemplates: SectionTemplate[] = [
         </div>
       </div>
     ),
+    blocks: createInfiniteCanvasTemplate,
   },
   {
     id: "template-5",
@@ -120,6 +141,7 @@ const sectionTemplates: SectionTemplate[] = [
         </div>
       </div>
     ),
+    blocks: createInfiniteCanvasTwoColumnTemplate,
   },
   {
     id: "template-6",
@@ -143,6 +165,7 @@ const sectionTemplates: SectionTemplate[] = [
         </div>
       </div>
     ),
+    blocks: createCanvasPublishTemplate,
   },
   {
     id: "template-7",
@@ -170,6 +193,7 @@ const sectionTemplates: SectionTemplate[] = [
         </div>
       </div>
     ),
+    blocks: createThreeColumnTemplate,
   },
   {
     id: "template-8",
@@ -191,6 +215,7 @@ const sectionTemplates: SectionTemplate[] = [
         </div>
       </div>
     ),
+    blocks: createStatisticsTemplate,
   },
   {
     id: "template-9",
@@ -206,6 +231,120 @@ const sectionTemplates: SectionTemplate[] = [
         </div>
       </div>
     ),
+    blocks: createTestimonialTemplate,
+  },
+  {
+    id: "template-pricing",
+    name: "Pricing",
+    description: "Pricing plans with tiers",
+    preview: (
+      <div className="bg-white border border-gray-200 rounded-xl p-6 h-40 flex flex-col items-center justify-center gap-4">
+        <div className="text-center">
+          <div className="text-sm font-semibold text-gray-900">Pricing</div>
+          <div className="text-xs text-gray-500 mt-1">Subtitle.</div>
+        </div>
+        <div className="flex gap-3 justify-center items-end">
+          <div className="flex flex-col items-center text-xs gap-2">
+            <div className="text-sm font-bold text-gray-900">$0</div>
+            <div className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
+              Sign up
+            </div>
+          </div>
+          <div className="flex flex-col items-center text-xs gap-2">
+            <div className="text-sm font-bold text-gray-900">$20</div>
+            <div className="px-2 py-1 bg-gray-900 text-white text-xs rounded">
+              Get In
+            </div>
+          </div>
+          <div className="flex flex-col items-center text-xs gap-2">
+            <div className="text-sm font-bold text-gray-900">$40</div>
+            <div className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
+              Sign up
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+    blocks: createPricingTemplate,
+  },
+  {
+    id: "template-faq",
+    name: "FAQ",
+    description: "Frequently asked questions",
+    preview: (
+      <div className="bg-white border border-gray-200 rounded-xl p-6 h-40 flex flex-col items-center justify-center gap-3">
+        <div className="text-center mb-2">
+          <div className="text-sm font-semibold text-gray-900">FAQ</div>
+        </div>
+        <div className="w-full space-y-2">
+          <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 rounded text-xs">
+            <input type="checkbox" className="w-3 h-3" disabled />
+            <span className="text-gray-600 text-xs">How do frames work?</span>
+          </div>
+          <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 rounded text-xs">
+            <input type="checkbox" className="w-3 h-3" disabled />
+            <span className="text-gray-600 text-xs">How do code pages?</span>
+          </div>
+          <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 rounded text-xs">
+            <input type="checkbox" className="w-3 h-3" disabled />
+            <span className="text-gray-600 text-xs">How do features?</span>
+          </div>
+        </div>
+      </div>
+    ),
+    blocks: createFaqTemplate,
+  },
+  {
+    id: "template-signup",
+    name: "Signup",
+    description: "Newsletter signup section",
+    preview: (
+      <div className="bg-white border border-gray-200 rounded-xl p-6 h-40 flex flex-col items-center justify-center gap-4">
+        <div className="text-center">
+          <div className="text-sm font-semibold text-gray-900">
+            Stay in the loop.
+          </div>
+          <div className="text-xs text-gray-500 mt-1">Sign up now.</div>
+        </div>
+        <div className="px-4 py-2 bg-gray-900 text-white text-xs font-medium rounded">
+          Sign up
+        </div>
+      </div>
+    ),
+    blocks: createSignupTemplate,
+  },
+  {
+    id: "template-footer",
+    name: "Footer",
+    description: "Footer with links and branding",
+    preview: (
+      <div className="bg-white border border-gray-200 rounded-xl p-6 h-40 flex flex-col justify-center gap-3">
+        <div className="flex justify-between gap-4">
+          <div className="text-xs">
+            <div className="font-semibold text-gray-900 mb-1">Product</div>
+            <div className="text-gray-500 text-xs space-y-0.5">
+              <div>Solutions</div>
+              <div>Contacts</div>
+            </div>
+          </div>
+          <div className="text-xs">
+            <div className="font-semibold text-gray-900 mb-1">Resources</div>
+            <div className="text-gray-500 text-xs space-y-0.5">
+              <div>Docs</div>
+              <div>Help</div>
+            </div>
+          </div>
+          <div className="text-xs">
+            <div className="font-semibold text-gray-900 mb-1">Company</div>
+            <div className="text-gray-500 text-xs space-y-0.5">
+              <div>Support</div>
+              <div>Blog</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+    blocks: createPricingFooterTemplate,
   },
 ];
 
@@ -258,7 +397,7 @@ export const SectionsPanel: React.FC<SectionsPanelProps> = ({
           {sectionTemplates.map((template) => (
             <button
               key={template.id}
-              onClick={() => onSelectTemplate(template.id)}
+              onClick={() => onSelectTemplate(template.blocks())}
               className="group text-left hover:opacity-75 transition-opacity"
             >
               {template.preview}

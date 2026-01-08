@@ -60,12 +60,25 @@ export const HeroBlockPreview: React.FC<BlockPreviewProps> = ({
         <p className="text-xl text-gray-600 mb-8 max-w-2xl">
           {props.subheading}
         </p>
-        <button
-          style={{ backgroundColor: props.ctaButtonColor }}
-          className="px-8 py-3 text-white font-medium rounded hover:opacity-90 transition-opacity"
-        >
-          {props.ctaButtonText}
-        </button>
+        <div className="flex gap-4">
+          <button
+            style={{ backgroundColor: props.ctaButtonColor }}
+            className="px-8 py-3 text-white font-medium rounded hover:opacity-90 transition-opacity"
+          >
+            {props.ctaButtonText}
+          </button>
+          {props.secondaryButtonText && (
+            <button
+              style={{
+                backgroundColor: props.secondaryButtonColor,
+                color: props.secondaryButtonTextColor,
+              }}
+              className="px-8 py-3 font-medium rounded hover:opacity-90 transition-opacity border border-gray-300"
+            >
+              {props.secondaryButtonText}
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -89,9 +102,7 @@ export const FeaturesBlockPreview: React.FC<BlockPreviewProps> = ({
         <h2 className="text-3xl font-bold text-center text-gray-900 mb-2">
           {props.heading}
         </h2>
-        <p className="text-center text-gray-600 mb-12">
-          {props.description}
-        </p>
+        <p className="text-center text-gray-600 mb-12">{props.description}</p>
         <div
           className="gap-8"
           style={{
@@ -283,7 +294,9 @@ export const FooterBlockPreview: React.FC<BlockPreviewProps> = ({
           </div>
           <div>
             <h4 className="font-semibold mb-4">Contact</h4>
-            <p className="text-sm opacity-75 mb-2">{props.contactInfo?.email}</p>
+            <p className="text-sm opacity-75 mb-2">
+              {props.contactInfo?.email}
+            </p>
             <p className="text-sm opacity-75">{props.contactInfo?.phone}</p>
           </div>
         </div>
@@ -320,5 +333,190 @@ export const SpacerBlockPreview: React.FC<BlockPreviewProps> = ({
           : "border-gray-300 bg-gray-50"
       }`}
     />
+  );
+};
+
+export const PricingBlockPreview: React.FC<BlockPreviewProps> = ({
+  block,
+  isSelected,
+  onSelect,
+}) => {
+  const props = block.properties;
+  return (
+    <div
+      onClick={onSelect}
+      className={`cursor-pointer transition-all border-2 ${
+        isSelected ? "border-valasys-orange" : "border-gray-200"
+      }`}
+      style={{ backgroundColor: props.backgroundColor }}
+    >
+      <div className="px-8 py-16">
+        <h2 className="text-3xl font-bold text-center text-gray-900 mb-2">
+          {props.heading}
+        </h2>
+        <p className="text-center text-gray-600 mb-12">{props.subheading}</p>
+        <div className="grid grid-cols-3 gap-8">
+          {props.pricingTiers?.map((tier: any) => (
+            <div
+              key={tier.id}
+              className={`rounded-lg p-8 text-center transition-all ${
+                tier.isHighlighted
+                  ? "bg-gray-900 text-white shadow-lg scale-105"
+                  : "bg-white border border-gray-200"
+              }`}
+            >
+              <h3 className="text-lg font-semibold mb-2">{tier.name}</h3>
+              <div className="text-4xl font-bold mb-2">{tier.price}</div>
+              <p
+                className={`text-sm mb-6 ${tier.isHighlighted ? "text-gray-300" : "text-gray-600"}`}
+              >
+                {tier.description}
+              </p>
+              <ul
+                className={`text-sm mb-8 space-y-2 ${
+                  tier.isHighlighted ? "text-gray-300" : "text-gray-600"
+                }`}
+              >
+                {tier.features?.map((feature: string, i: number) => (
+                  <li key={i}>• {feature}</li>
+                ))}
+              </ul>
+              <button
+                style={{
+                  backgroundColor: tier.buttonColor,
+                  color: tier.buttonTextColor,
+                }}
+                className="w-full py-2 rounded font-medium hover:opacity-90 transition-opacity"
+              >
+                {tier.buttonText}
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const FaqBlockPreview: React.FC<BlockPreviewProps> = ({
+  block,
+  isSelected,
+  onSelect,
+}) => {
+  const props = block.properties;
+  return (
+    <div
+      onClick={onSelect}
+      className={`cursor-pointer transition-all border-2 ${
+        isSelected ? "border-valasys-orange" : "border-gray-200"
+      }`}
+      style={{ backgroundColor: props.backgroundColor }}
+    >
+      <div className="px-8 py-16 max-w-3xl mx-auto">
+        <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+          {props.heading}
+        </h2>
+        <div className="space-y-4">
+          {props.faqs?.map((faq: any) => (
+            <details
+              key={faq.id}
+              className="group border border-gray-200 rounded-lg p-6 cursor-pointer hover:border-valasys-orange transition-colors"
+            >
+              <summary className="flex items-center justify-between font-semibold text-gray-900 group-open:text-valasys-orange">
+                {faq.question}
+                <span className="text-xl group-open:rotate-180 transition-transform">
+                  ▼
+                </span>
+              </summary>
+              <p className="mt-4 text-gray-600">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const SignupBlockPreview: React.FC<BlockPreviewProps> = ({
+  block,
+  isSelected,
+  onSelect,
+}) => {
+  const props = block.properties;
+  return (
+    <div
+      onClick={onSelect}
+      className={`cursor-pointer transition-all border-2 ${
+        isSelected ? "border-valasys-orange" : "border-gray-200"
+      }`}
+      style={{ backgroundColor: props.backgroundColor }}
+    >
+      <div className="px-8 py-16 max-w-2xl mx-auto text-center">
+        <h2 className="text-3xl font-bold text-gray-900 mb-2">
+          {props.heading}
+        </h2>
+        <p className="text-gray-600 mb-8">{props.subheading}</p>
+        <div className="flex gap-3">
+          <input
+            type="email"
+            placeholder={props.inputPlaceholder}
+            className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-valasys-orange"
+          />
+          <button
+            style={{
+              backgroundColor: props.buttonColor,
+              color: props.buttonTextColor,
+            }}
+            className="px-8 py-3 font-medium rounded-lg hover:opacity-90 transition-opacity"
+          >
+            {props.buttonText}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const PricingFooterBlockPreview: React.FC<BlockPreviewProps> = ({
+  block,
+  isSelected,
+  onSelect,
+}) => {
+  const props = block.properties;
+  return (
+    <div
+      onClick={onSelect}
+      className={`cursor-pointer transition-all border-2 ${
+        isSelected ? "border-valasys-orange" : "border-gray-200"
+      }`}
+      style={{ backgroundColor: props.backgroundColor }}
+    >
+      <div className="px-8 py-12">
+        <div
+          className="grid gap-8"
+          style={{
+            gridTemplateColumns: `repeat(${props.columns?.length || 3}, 1fr)`,
+          }}
+        >
+          {props.columns?.map((column: any) => (
+            <div key={column.id}>
+              <h4 className="font-semibold text-gray-900 mb-4">
+                {column.title}
+              </h4>
+              <div className="space-y-2">
+                {column.links?.map((link: any, i: number) => (
+                  <p
+                    key={i}
+                    className="text-sm text-gray-600 hover:text-valasys-orange transition-colors cursor-pointer"
+                  >
+                    {link.label}
+                  </p>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };

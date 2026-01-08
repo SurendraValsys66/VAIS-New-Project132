@@ -11,6 +11,10 @@ import {
   ContactFormBlockPreview,
   FooterBlockPreview,
   SpacerBlockPreview,
+  PricingBlockPreview,
+  FaqBlockPreview,
+  SignupBlockPreview,
+  PricingFooterBlockPreview,
 } from "./BlockPreviews";
 
 interface LandingPagePreviewProps {
@@ -39,8 +43,7 @@ export const LandingPagePreview: React.FC<LandingPagePreviewProps> = ({
       block,
       isSelected,
       onSelect: () => onSelectBlock(block.id),
-      onUpdate: (props: Record<string, any>) =>
-        onUpdateBlock(block.id, props),
+      onUpdate: (props: Record<string, any>) => onUpdateBlock(block.id, props),
     };
 
     let blockContent;
@@ -69,6 +72,18 @@ export const LandingPagePreview: React.FC<LandingPagePreviewProps> = ({
         break;
       case "section-spacer":
         blockContent = <SpacerBlockPreview {...blockProps} />;
+        break;
+      case "pricing":
+        blockContent = <PricingBlockPreview {...blockProps} />;
+        break;
+      case "faq":
+        blockContent = <FaqBlockPreview {...blockProps} />;
+        break;
+      case "signup":
+        blockContent = <SignupBlockPreview {...blockProps} />;
+        break;
+      case "pricing-footer":
+        blockContent = <PricingFooterBlockPreview {...blockProps} />;
         break;
       default:
         blockContent = <div>Unknown block type</div>;
