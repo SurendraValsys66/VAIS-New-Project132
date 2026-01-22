@@ -761,11 +761,20 @@ export default function BuildVAISForm() {
                       <Label htmlFor="category">My Product Category</Label>
                       <Select
                         value={formData.productCategory}
-                        onValueChange={(value) =>
-                          setFormData({ ...formData, productCategory: value })
-                        }
+                        onValueChange={(value) => {
+                          setFormData({ ...formData, productCategory: value });
+                          // Trigger blink on the geolocation field
+                          triggerFieldBlink("geolocation");
+                        }}
                       >
-                        <SelectTrigger>
+                        <SelectTrigger
+                          className={cn(
+                            blinkingField === "productCategory"
+                              ? "border-blink"
+                              : "",
+                            formData.productCategory ? "border-green-300" : "",
+                          )}
+                        >
                           <SelectValue placeholder="Select category" />
                         </SelectTrigger>
                         <SelectContent>
