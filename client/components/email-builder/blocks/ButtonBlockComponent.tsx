@@ -30,9 +30,7 @@ export const ButtonBlockComponent: React.FC<ButtonBlockComponentProps> = ({
         : "center";
 
   const buttonWidth =
-    block.widthUnit === "%"
-      ? `${block.width}%`
-      : `${block.width}px`;
+    block.widthUnit === "%" ? `${block.width}%` : `${block.width}px`;
 
   const [showTooltip, setShowTooltip] = useState(false);
 
@@ -51,7 +49,7 @@ export const ButtonBlockComponent: React.FC<ButtonBlockComponentProps> = ({
         style={{
           position: "relative",
           display: "inline-block",
-          overflow: "visible"
+          overflow: "visible",
         }}
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
@@ -75,25 +73,27 @@ export const ButtonBlockComponent: React.FC<ButtonBlockComponentProps> = ({
         </button>
         {showTooltip && block.linkTooltip && (
           <div
-            style={{
-              position: "absolute",
-              bottom: "calc(100% + 18px)",
-              left: "50%",
-              transform: "translateX(-50%) scale(1)",
-              backgroundColor: "#1F2937",
-              color: "#FFFFFF",
-              padding: "5px 10px",
-              borderRadius: "4px",
-              fontSize: "11px",
-              fontWeight: "500",
-              whiteSpace: "nowrap",
-              zIndex: 10000,
-              boxShadow: "0 6px 12px rgba(0, 0, 0, 0.25)",
-              pointerEvents: "none",
-              animation: "tooltipFade 0.2s ease-in-out",
-              letterSpacing: "0.2px",
-              border: "1px solid rgba(255, 255, 255, 0.08)",
-            } as React.CSSProperties}
+            style={
+              {
+                position: "absolute",
+                bottom: "calc(100% + 18px)",
+                left: "50%",
+                transform: "translateX(-50%) scale(1)",
+                backgroundColor: "#1F2937",
+                color: "#FFFFFF",
+                padding: "5px 10px",
+                borderRadius: "4px",
+                fontSize: "11px",
+                fontWeight: "500",
+                whiteSpace: "nowrap",
+                zIndex: 10000,
+                boxShadow: "0 6px 12px rgba(0, 0, 0, 0.25)",
+                pointerEvents: "none",
+                animation: "tooltipFade 0.2s ease-in-out",
+                letterSpacing: "0.2px",
+                border: "1px solid rgba(255, 255, 255, 0.08)",
+              } as React.CSSProperties
+            }
           >
             {block.linkTooltip}
             <div
