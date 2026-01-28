@@ -111,8 +111,6 @@ const App = () => (
                 <Route path="/notifications" element={<AllNotifications />} />
                 <Route path="/spending-history" element={<SpendingHistory />} />
                 <Route path="/integrations" element={<Integrations />} />
-                <Route path="/templates" element={<Templates />} />
-                <Route path="/landing-pages" element={<LandingPages />} />
                 <Route path="/mastery" element={<MasteryGuide />} />
 
                 {/* Onboarding flow */}
