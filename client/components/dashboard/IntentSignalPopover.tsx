@@ -1,15 +1,11 @@
 import React, { useState } from "react";
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-} from "@/components/ui/popover";
 import { Badge } from "@/components/ui/badge";
 import {
   Building2,
   MapPin,
   DollarSign,
   Target,
+  X,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import IntentSignalModal from "./IntentSignalModal";
