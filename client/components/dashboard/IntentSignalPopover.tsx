@@ -5,16 +5,27 @@ import {
   PopoverContent,
 } from "@/components/ui/popover";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import {
   Building2,
   MapPin,
   DollarSign,
   Target,
-  ChevronRight,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import IntentSignalModal from "./IntentSignalModal";
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  ResponsiveContainer,
+} from "recharts";
 
 interface IntentSignalData {
   compositeScore: number;
