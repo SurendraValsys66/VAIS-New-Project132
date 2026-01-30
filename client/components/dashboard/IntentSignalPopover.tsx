@@ -398,13 +398,15 @@ export default function IntentSignalPopover({
               </div>
 
               {/* Footer Info */}
-              <div className="border-t border-gray-200 pt-4">
-                <p className="text-xs text-gray-500 text-center">
-                  <span className="text-valasys-orange font-semibold">
-                    Tip:
-                  </span>{" "}
-                  Click the chart to view detailed breakdown
-                </p>
+              <div className="border-t border-gray-200 pt-4 mt-2">
+                <div className="bg-gradient-to-r from-valasys-orange/10 to-orange-500/10 border border-orange-200/50 rounded-lg p-3">
+                  <p className="text-xs text-gray-700">
+                    <span className="text-valasys-orange font-bold">
+                      💡 Insight:
+                    </span>{" "}
+                    This company shows strong intent signals across multiple topics with consistent week-over-week growth. Click the chart for deeper analysis.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
